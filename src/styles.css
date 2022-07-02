@@ -1,0 +1,149 @@
+body {
+  color: #1a3c40;
+  font-family: "Nunito", sans-serif;
+  background-image: url("../images/body-img.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+i {
+  margin: 5px;
+}
+
+.weather-app-wrapper {
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+.weather-app {
+  border: 1px solid #1a3c40;
+  border-radius: 10px;
+  background-color: rgb(95, 147, 154, 0.9);
+  box-shadow: 9px 9px 5px rgba(50, 50, 50, 0.3);
+}
+
+.cities-links {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  margin: 7px;
+}
+
+#new-york-link,
+#london-link,
+#paris-link,
+#sydney-link,
+#tokyo-link,
+#tel-aviv-link {
+  text-decoration: none;
+  color: #1a3c40;
+}
+
+#new-york-link:hover,
+#london-link:hover,
+#paris-link:hover,
+#sydney-link:hover,
+#tokyo-link:hover,
+#tel-aviv-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ede6db;
+}
+
+.search-results {
+  border-top: 1px solid #1a3c40;
+}
+
+.current-weather-main {
+  text-align: center;
+  border: 3px solid #ede6db;
+  border-radius: 50%;
+  margin: 40px;
+  width: 300px;
+  height: 300px;
+}
+
+.temperature-part {
+  margin-top: 35px;
+  margin-bottom: 7px;
+  line-height: 1;
+}
+
+.day-temperature {
+  font-size: 110px;
+  font-weight: 600;
+}
+
+.units {
+  font-size: 24px;
+  font-weight: 500;
+  position: relative;
+  top: -60px;
+}
+
+.weather-description {
+  font-size: 26px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.current-weather-additional {
+  text-align: center;
+  margin: 20px;
+  margin-top: 40px;
+}
+
+.current-weather-details {
+  border: 3px solid #ede6db;
+  outline: 3px solid #1a3c40;
+  height: auto;
+  margin: 10px;
+  padding: 12px;
+  line-height: 2;
+  font-size: 20px;
+}
+
+.current-date {
+  font-size: 22px;
+  color: #ede6db;
+  margin: 0;
+}
+
+.github-link {
+  color: #1a3c40;
+  text-decoration: none;
+}
+
+.github-link:hover {
+  color: #ede6db;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.made-by {
+  margin-top: 6px;
+  font-weight: 500;
+  font-size: 17px;
+  text-align: center;
+}
+
+#current-weather-icon {
+  width: 90px;
+}
