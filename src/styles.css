@@ -11,6 +11,36 @@ p {
   font-family: "Montserrat", sans-serif;
 }
 
+input[type="text"] {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #ede6db;
+  border-radius: 30px;
+  width: 580px;
+  text-align: center;
+  transition: all 200ms ease-in;
+}
+
+input[type="image"] {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 0.5px;
+  font-size: 40px;
+  border: none;
+  background-color: #ede6db;
+  transition: all 200ms ease-in;
+}
+
+input:hover {
+  background-color: #417d7a;
+  border: 1px solid #1a3c40;
+}
+
+::placeholder {
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -67,6 +97,12 @@ i {
   color: #ede6db;
 }
 
+.search-form {
+  padding: 5px 5px 10px 5px;
+  text-align: center;
+  margin: 0 15px;
+}
+
 .search-results {
   border-top: 1px solid #1a3c40;
 }
@@ -75,7 +111,7 @@ i {
   text-align: center;
   border: 3px solid #ede6db;
   border-radius: 50%;
-  margin: 40px;
+  margin: 20px 40px;
   width: 300px;
   height: 300px;
 }
@@ -107,12 +143,13 @@ i {
 .current-weather-additional {
   text-align: center;
   margin: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .current-weather-details {
   border: 3px solid #ede6db;
   outline: 3px solid #1a3c40;
+  border-radius: 10px;
   height: auto;
   margin: 10px;
   padding: 12px;
