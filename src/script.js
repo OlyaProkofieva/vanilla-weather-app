@@ -66,7 +66,8 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  feelsLikeCelsiusTemperature = response.data.main.feels_like;
+  feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   pressureElement.innerHTML = Math.round(response.data.main.pressure);
@@ -140,21 +141,36 @@ function displayTelAvivWeather(event) {
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#day-temperature");
+  let feelsLikeElement = document.querySelector("#feels-like");
+  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
+
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let feelsLikeFahrenheitTemperature =
+    (feelsLikeCelsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  feelsLikeElement.innerHTML = Math.round(feelsLikeFahrenheitTemperature);
+  unitFeelsLikeElement.innerHTML = "°F";
 }
 
 function displayCelciusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#day-temperature");
+  let feelsLikeElement = document.querySelector("#feels-like");
+  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
+
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
+  unitFeelsLikeElement.innerHTML = "°C";
 }
 
 let celsiusTemperature = null;
+let feelsLikeCelsiusTemperature = null;
 
 let locationButton = document.querySelector(".current-location-button");
 locationButton.addEventListener("click", getLocation);
