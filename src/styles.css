@@ -41,6 +41,10 @@ input:hover {
   font-family: "Montserrat", sans-serif;
 }
 
+[alt] {
+  text-transform: capitalize;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -111,18 +115,17 @@ i {
   text-align: center;
   border: 3px solid #ede6db;
   border-radius: 50%;
-  margin: 20px 40px;
+  margin: 25px 40px;
   width: 300px;
   height: 300px;
 }
 
 .temperature-part {
-  margin-top: 35px;
-  margin-bottom: 7px;
-  line-height: 1;
+  margin-top: 45px;
+  line-height: 0.7;
 }
 
-.day-temperature {
+#day-temperature {
   font-size: 110px;
   font-weight: 600;
 }
@@ -134,10 +137,11 @@ i {
   top: -60px;
 }
 
-.weather-description {
+#weather-description {
   font-size: 26px;
-  margin: 0;
+  margin-bottom: 10px;
   font-weight: 400;
+  text-transform: capitalize;
 }
 
 .current-weather-additional {
@@ -157,18 +161,31 @@ i {
   font-size: 20px;
 }
 
+#current-city {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.last-update {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
 .current-date {
   font-size: 22px;
   color: #ede6db;
   margin: 0;
 }
 
-.github-link {
+.github-link,
+.icons-link {
   color: #1a3c40;
   text-decoration: none;
 }
 
-.github-link:hover {
+.github-link:hover,
+.icons-link:hover {
   color: #ede6db;
   cursor: pointer;
   text-decoration: underline;
@@ -176,11 +193,11 @@ i {
 
 .made-by {
   margin-top: 6px;
-  font-weight: 500;
-  font-size: 17px;
+  font-weight: 600;
+  font-size: 14px;
   text-align: center;
 }
 
 #current-weather-icon {
-  width: 90px;
+  width: 80px;
 }

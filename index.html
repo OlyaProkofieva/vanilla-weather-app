@@ -23,6 +23,7 @@
       src="https://kit.fontawesome.com/ded39236e2.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <title>Weather App</title>
   </head>
@@ -43,11 +44,12 @@
             </div>
           </div>
           <div class="search-form">
-            <form class="d-flex justify-content-around">
+            <form class="d-flex justify-content-around" id="searching-form">
               <input
                 type="text"
                 class="search-input"
                 placeholder="Enter a location"
+                autocomplete="off"
               />
               <input
                 type="image"
@@ -69,27 +71,32 @@
             <div class="row">
               <div class="col-7 current-weather-main">
                 <p class="temperature-part">
-                  <strong class="day-temperature">26</strong
+                  <strong id="day-temperature"></strong
                   ><span class="units">°C|°F</span>
                 </p>
-                <p class="weather-description">Clear Sky</p>
-                <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-                  alt="Weather icon"
-                  id="current-weather-icon"
-                />
+                <p id="weather-description"></p>
+                <img src="" alt="" id="current-weather-icon" />
               </div>
               <div class="col-5 current-weather-additional">
-                <h1>KYIV, UA</h1>
-                <p class="current-date">Saturday, 2 July, 12:11</p>
+                <h1 id="current-city"></h1>
+                <p class="last-update">Last update at:</p>
+                <p class="current-date" id="date"></p>
                 <ul class="current-weather-details">
                   <li>
-                    <i class="fa-solid fa-temperature-half"></i>Feels like: 26°C
+                    <i class="fa-solid fa-temperature-half"></i>Feels like:
+                    <span id="feels-like"></span>°C
                   </li>
-                  <li><i class="fa-solid fa-droplet"></i>Humidity: 38%</li>
-                  <li><i class="fa-solid fa-wind"></i>Wind: 3 m/s</li>
                   <li>
-                    <i class="fa-solid fa-arrows-down-to-line"></i>Pressure: 990
+                    <i class="fa-solid fa-droplet"></i>Humidity:
+                    <span id="humidity"></span>%
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-wind"></i>Wind:
+                    <span id="wind"></span> m/s
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-arrows-down-to-line"></i>Pressure:
+                    <span id="pressure"></span>
                     hPa
                   </li>
                 </ul>
@@ -106,6 +113,11 @@
             >Open-source</a
           >
           by Olha Prokofieva
+          <br />
+          Weather icons by
+          <a target="_blank" href="https://icons8.com" class="icons-link"
+            >Icons8</a
+          >
         </p>
       </div>
     </div>
