@@ -179,16 +179,18 @@ i {
 }
 
 .github-link,
-.icons-link {
+.icons-link,
+.made-by-name {
   color: #1a3c40;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .github-link:hover,
-.icons-link:hover {
+.icons-link:hover,
+.made-by-name:hover {
   color: #ede6db;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .made-by {
@@ -200,4 +202,25 @@ i {
 
 #current-weather-icon {
   width: 80px;
+}
+
+.temperature-part .active {
+  color: #1a3c40;
+  cursor: default;
+  text-decoration: none;
+}
+
+.temperature-part .active:hover {
+  color: #1a3c40;
+  text-decoration: none;
+}
+
+.temperature-links {
+  color: #ede6db;
+  text-decoration: none;
+}
+
+.temperature-links:hover {
+  color: #1a3c40;
+  text-decoration: underline;
 }

@@ -46,7 +46,6 @@ function formatDate(timestamp) {
 }
 
 function displayWeather(response) {
-  console.log(response);
   let temperatureElement = document.querySelector("#day-temperature");
   let descriptionElement = document.querySelector("#weather-description");
   let iconElement = document.querySelector("#current-weather-icon");
@@ -57,9 +56,9 @@ function displayWeather(response) {
   let windElement = document.querySelector("#wind");
   let pressureElement = document.querySelector("#pressure");
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   descriptionElement.innerHTML = response.data.weather[0].description;
-
   iconElement.setAttribute(
     "src",
     `images/weather-icons/${response.data.weather[0].icon}.png`
@@ -138,6 +137,25 @@ function displayTelAvivWeather(event) {
   searchCity(city);
 }
 
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#day-temperature");
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#day-temperature");
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let locationButton = document.querySelector(".current-location-button");
 locationButton.addEventListener("click", getLocation);
 
@@ -161,5 +179,11 @@ searchTokyo.addEventListener("click", displayTokyoWeather);
 
 let searchTelAviv = document.querySelector("#tel-aviv-link");
 searchTelAviv.addEventListener("click", displayTelAvivWeather);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
 
 searchCity("Kyiv");

@@ -35,10 +35,18 @@
             <div class="col-2">
               <a href="#" id="new-york-link">New York</a>
             </div>
-            <div class="col-2"><a href="#" id="london-link">London</a></div>
-            <div class="col-2"><a href="#" id="paris-link">Paris</a></div>
-            <div class="col-2"><a href="#" id="sydney-link">Sydney</a></div>
-            <div class="col-2"><a href="#" id="tokyo-link">Tokyo</a></div>
+            <div class="col-2">
+              <a href="#" id="london-link">London</a>
+            </div>
+            <div class="col-2">
+              <a href="#" id="paris-link">Paris</a>
+            </div>
+            <div class="col-2">
+              <a href="#" id="sydney-link">Sydney</a>
+            </div>
+            <div class="col-2">
+              <a href="#" id="tokyo-link">Tokyo</a>
+            </div>
             <div class="col-2">
               <a href="#" id="tel-aviv-link">Tel Aviv</a>
             </div>
@@ -53,7 +61,7 @@
               />
               <input
                 type="image"
-                src="images/search-icon.svg"
+                src="images/search-icon.png"
                 alt="Search location"
                 title="Search location"
                 class="submit-button"
@@ -61,7 +69,7 @@
               <input
                 type="image"
                 class="current-location-button"
-                src="images/location-icon.svg"
+                src="images/location-icon.png"
                 alt="Current location"
                 title="Current location"
               />
@@ -71,8 +79,17 @@
             <div class="row">
               <div class="col-7 current-weather-main">
                 <p class="temperature-part">
-                  <strong id="day-temperature"></strong
-                  ><span class="units">°C|°F</span>
+                  <strong id="day-temperature"></strong>
+                  <span class="units">
+                    <a
+                      href="#"
+                      id="celcius-link"
+                      class="active temperature-links"
+                      >°C</a
+                    >|<a href="#" id="fahrenheit-link" class="temperature-links"
+                      >°F</a
+                    >
+                  </span>
                 </p>
                 <p id="weather-description"></p>
                 <img src="" alt="" id="current-weather-icon" />
@@ -96,8 +113,7 @@
                   </li>
                   <li>
                     <i class="fa-solid fa-arrows-down-to-line"></i>Pressure:
-                    <span id="pressure"></span>
-                    hPa
+                    <span id="pressure"></span> hPa
                   </li>
                 </ul>
               </div>
@@ -105,14 +121,22 @@
           </div>
         </div>
         <p class="made-by">
+          This project was coded by
+          <a
+            href="https://www.shecodes.io/students/726-olha-prokofieva"
+            title="SheCodes profile"
+            target="_blank"
+            class="made-by-name"
+            >Olha Prokofieva</a
+          >
+          and is open-sourced on
           <a
             href="https://github.com/OlyaProkofieva/vanilla-weather-app"
             target="_blank"
             title="Go to GitHub"
             class="github-link"
-            >Open-source</a
+            >GitHub</a
           >
-          by Olha Prokofieva
           <br />
           Weather icons by
           <a target="_blank" href="https://icons8.com" class="icons-link"
