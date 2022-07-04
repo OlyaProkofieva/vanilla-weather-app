@@ -99,6 +99,9 @@ function searchCity(city) {
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.remove("inactive");
   fahrenheitLink.classList.add("inactive");
+
+  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
+  unitFeelsLikeElement.innerHTML = "°C";
 }
 
 function handleSubmit(event) {
