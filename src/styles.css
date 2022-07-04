@@ -104,15 +104,23 @@ i {
   line-height: 0.7;
 }
 
-.temperature-part .active {
+.active {
   color: #1a3c40;
   cursor: default;
   text-decoration: none;
 }
-
-.temperature-part .active:hover {
+.active:hover {
   color: #1a3c40;
   text-decoration: none;
+}
+
+.inactive {
+  text-decoration: none;
+  color: #ede6db;
+}
+.inactive:hover {
+  text-decoration: underline;
+  color: #1a3c40;
 }
 
 .units {
@@ -120,16 +128,6 @@ i {
   font-weight: 500;
   position: relative;
   top: -57px;
-}
-
-.temperature-links {
-  color: #ede6db;
-  text-decoration: none;
-}
-
-.temperature-links:hover {
-  color: #1a3c40;
-  text-decoration: underline;
 }
 
 .current-weather-additional {

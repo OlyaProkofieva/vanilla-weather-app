@@ -94,6 +94,11 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeather);
+
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.remove("inactive");
+  fahrenheitLink.classList.add("inactive");
 }
 
 function handleSubmit(event) {
@@ -146,6 +151,8 @@ function displayFahrenheitTemperature(event) {
 
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+  celciusLink.classList.add("inactive");
+  fahrenheitLink.classList.remove("inactive");
 
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let feelsLikeFahrenheitTemperature =
@@ -163,6 +170,8 @@ function displayCelciusTemperature(event) {
 
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  celciusLink.classList.remove("inactive");
+  fahrenheitLink.classList.add("inactive");
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
