@@ -59,10 +59,10 @@ function displayWeather(response) {
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
-  console.log(response.data.weather[0].icon);
+
   iconElement.setAttribute(
     "src",
-    `images/${response.data.weather[0].icon}.png`
+    `images/weather-icons/${response.data.weather[0].icon}.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -102,10 +102,64 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
+function displayNewYorkWeather(event) {
+  event.preventDefault();
+  let city = "New York";
+  searchCity(city);
+}
+
+function displayLondonWeather(event) {
+  event.preventDefault();
+  let city = "London";
+  searchCity(city);
+}
+
+function displayParisWeather(event) {
+  event.preventDefault();
+  let city = "Paris";
+  searchCity(city);
+}
+
+function displaySydneyWeather(event) {
+  event.preventDefault();
+  let city = "Sydney";
+  searchCity(city);
+}
+
+function displayTokyoWeather(event) {
+  event.preventDefault();
+  let city = "Tokyo";
+  searchCity(city);
+}
+
+function displayTelAvivWeather(event) {
+  event.preventDefault();
+  let city = "Tel Aviv";
+  searchCity(city);
+}
+
 let locationButton = document.querySelector(".current-location-button");
 locationButton.addEventListener("click", getLocation);
 
 let searchForm = document.querySelector("#searching-form");
 searchForm.addEventListener("submit", handleSubmit);
+
+let searchNewYork = document.querySelector("#new-york-link");
+searchNewYork.addEventListener("click", displayNewYorkWeather);
+
+let searchLondon = document.querySelector("#london-link");
+searchLondon.addEventListener("click", displayLondonWeather);
+
+let searchParis = document.querySelector("#paris-link");
+searchParis.addEventListener("click", displayParisWeather);
+
+let searchSydney = document.querySelector("#sydney-link");
+searchSydney.addEventListener("click", displaySydneyWeather);
+
+let searchTokyo = document.querySelector("#tokyo-link");
+searchTokyo.addEventListener("click", displayTokyoWeather);
+
+let searchTelAviv = document.querySelector("#tel-aviv-link");
+searchTelAviv.addEventListener("click", displayTelAvivWeather);
 
 searchCity("Kyiv");
