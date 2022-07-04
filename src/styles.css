@@ -36,15 +36,6 @@ input:hover {
   border: 1px solid #1a3c40;
 }
 
-::placeholder {
-  color: #1a3c40;
-  font-family: "Montserrat", sans-serif;
-}
-
-[alt] {
-  text-transform: capitalize;
-}
-
 ul {
   margin: 0;
   padding: 0;
@@ -59,6 +50,15 @@ li {
 
 i {
   margin: 5px;
+}
+
+::placeholder {
+  color: #1a3c40;
+  font-family: "Montserrat", sans-serif;
+}
+
+[alt] {
+  text-transform: capitalize;
 }
 
 .weather-app-wrapper {
@@ -78,27 +78,6 @@ i {
   font-family: "Montserrat", sans-serif;
   font-size: 17px;
   margin: 7px;
-}
-
-#new-york-link,
-#london-link,
-#paris-link,
-#sydney-link,
-#tokyo-link,
-#tel-aviv-link {
-  text-decoration: none;
-  color: #1a3c40;
-}
-
-#new-york-link:hover,
-#london-link:hover,
-#paris-link:hover,
-#sydney-link:hover,
-#tokyo-link:hover,
-#tel-aviv-link:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  color: #ede6db;
 }
 
 .search-form {
@@ -125,9 +104,15 @@ i {
   line-height: 0.7;
 }
 
-#day-temperature {
-  font-size: 105px;
-  font-weight: 600;
+.temperature-part .active {
+  color: #1a3c40;
+  cursor: default;
+  text-decoration: none;
+}
+
+.temperature-part .active:hover {
+  color: #1a3c40;
+  text-decoration: none;
 }
 
 .units {
@@ -137,11 +122,14 @@ i {
   top: -57px;
 }
 
-#weather-description {
-  font-size: 23px;
-  margin-bottom: 5px;
-  font-weight: 400;
-  text-transform: capitalize;
+.temperature-links {
+  color: #ede6db;
+  text-decoration: none;
+}
+
+.temperature-links:hover {
+  color: #1a3c40;
+  text-decoration: underline;
 }
 
 .current-weather-additional {
@@ -161,11 +149,6 @@ i {
   font-size: 20px;
 }
 
-#current-city {
-  text-transform: uppercase;
-  margin-bottom: 0;
-}
-
 .last-update {
   font-size: 16px;
   margin: 0;
@@ -178,21 +161,6 @@ i {
   margin: 0;
 }
 
-.github-link,
-.icons-link,
-.made-by-name {
-  color: #1a3c40;
-  text-decoration: underline;
-}
-
-.github-link:hover,
-.icons-link:hover,
-.made-by-name:hover {
-  color: #ede6db;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .made-by {
   margin-top: 6px;
   font-weight: 600;
@@ -200,27 +168,59 @@ i {
   text-align: center;
 }
 
+.github-link,
+.made-by-name,
+.icons-link {
+  color: #1a3c40;
+  text-decoration: underline;
+}
+
+.github-link:hover,
+.made-by-name:hover,
+.icons-link:hover {
+  color: #ede6db;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#new-york-link,
+#london-link,
+#paris-link,
+#sydney-link,
+#tokyo-link,
+#tel-aviv-link {
+  text-decoration: none;
+  color: #1a3c40;
+}
+
+#new-york-link:hover,
+#london-link:hover,
+#paris-link:hover,
+#sydney-link:hover,
+#tokyo-link:hover,
+#tel-aviv-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ede6db;
+}
+
+#day-temperature {
+  font-size: 105px;
+  font-weight: 600;
+}
+
 #current-weather-icon {
   width: 80px;
 }
 
-.temperature-part .active {
-  color: #1a3c40;
-  cursor: default;
-  text-decoration: none;
+#current-city {
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
-.temperature-part .active:hover {
-  color: #1a3c40;
-  text-decoration: none;
-}
-
-.temperature-links {
-  color: #ede6db;
-  text-decoration: none;
-}
-
-.temperature-links:hover {
-  color: #1a3c40;
-  text-decoration: underline;
+#weather-description {
+  font-size: 23px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  text-transform: capitalize;
 }
