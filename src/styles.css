@@ -171,18 +171,17 @@ i {
 
 .forecast-temperatures {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
 }
 
 .forecast-temperature-max {
   margin: 0 2px;
-  color: #ede6db;
 }
 
 .forecast-temperature-min {
   margin: 0 2px;
-  color: #1a3c40;
+  opacity: 0.6;
 }
 
 .forecast-icon {
