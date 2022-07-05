@@ -216,6 +216,24 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   feelsLikeElement.innerHTML = Math.round(feelsLikeFahrenheitTemperature);
   unitFeelsLikeElement.innerHTML = "°F";
+
+  if (celsiusActive) {
+    let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
+    let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
+    for (let i = 0; i < temperatureMax.length; i++) {
+      let temperatureFahrenheitMax =
+        (parseInt(temperatureMax[i].innerText) * 9) / 5 + 32;
+      temperatureMax[i].innerHTML = `${Math.round(temperatureFahrenheitMax)}°`;
+    }
+
+    for (let i = 0; i < temperatureMin.length; i++) {
+      let temperatureFahrenheitMin =
+        (parseInt(temperatureMin[i].innerText) * 9) / 5 + 32;
+      temperatureMin[i].innerHTML = `${Math.round(temperatureFahrenheitMin)}°`;
+    }
+
+    celsiusActive = !celsiusActive;
+  }
 }
 
 function displayCelciusTemperature(event) {
@@ -232,10 +250,29 @@ function displayCelciusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
   unitFeelsLikeElement.innerHTML = "°C";
+
+  if (!celsiusActive) {
+    let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
+    let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
+
+    for (let i = 0; i < temperatureMax.length; i++) {
+      let temperatureCelsiusMax =
+        ((parseInt(temperatureMax[i].innerText) - 32) * 5) / 9;
+      temperatureMax[i].innerHTML = `${Math.round(temperatureCelsiusMax)}°`;
+    }
+
+    for (let i = 0; i < temperatureMin.length; i++) {
+      let temperatureCelsiusMin =
+        ((parseInt(temperatureMin[i].innerText) - 32) * 5) / 9;
+      temperatureMin[i].innerHTML = `${Math.round(temperatureCelsiusMin)}°`;
+    }
+    celsiusActive = !celsiusActive;
+  }
 }
 
 let celsiusTemperature = null;
 let feelsLikeCelsiusTemperature = null;
+let celsiusActive = true;
 
 let locationButton = document.querySelector(".current-location-button");
 locationButton.addEventListener("click", getLocation);
