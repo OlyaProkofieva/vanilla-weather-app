@@ -69,7 +69,7 @@ function displayForecast(response) {
                 )}</div>
                 <img
                   src="images/weather-icons/${forecastDay.weather[0].icon}.png"
-                  alt=""
+                  alt="${forecastDay.weather[0].description}"
                   class="forecast-icon"
                 />
                 <div class="forecast-temperatures">
@@ -88,12 +88,60 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function formatDateHourlyWeather(timestamp) {
+  let date = new Date(timestamp * 1000);
+
+  let currentHours = date.getHours();
+  if (currentHours < 10) {
+    currentHours = `0${currentHours}`;
+  }
+  return currentHours;
+}
+
+function displayHourlyWeather(response) {
+  console.log(response.data.hourly);
+
+  let hourlyElement = document.querySelector("#hourly-weather");
+
+  let hourlyWeatherHTML = `<div class="row">`;
+
+  let hourlyWeather = response.data.hourly;
+  hourlyWeather.forEach(function (hour, index) {
+    if (index < 12) {
+      hourlyWeatherHTML =
+        hourlyWeatherHTML +
+        `<div class="col-1">
+              <div class="weather-hour">${formatDateHourlyWeather(
+                hour.dt
+              )}</div>
+              <img
+                src="images/weather-icons/${hour.weather[0].icon}.png"
+                alt="${hour.weather[0].description}"
+                class="hourly-weather-icon"
+              />
+              <div class="hourly-temperature">${Math.round(hour.temp)}°</div>
+            </div>`;
+    }
+  });
+
+  hourlyWeatherHTML = hourlyWeatherHTML + `</div>`;
+  hourlyElement.innerHTML = hourlyWeatherHTML;
+}
+
 function getForecast(coordinates) {
   let apiKey = "74e689e7d5e387f646d3bb8762c944a1";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayForecast);
+}
+
+function getHourlyWeather(coordinates) {
+  let apiKey = "74e689e7d5e387f646d3bb8762c944a1";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayHourlyWeather);
 }
 
 function displayWeather(response) {
@@ -123,6 +171,7 @@ function displayWeather(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   pressureElement.innerHTML = Math.round(response.data.main.pressure);
 
+  getHourlyWeather(response.data.coord);
   getForecast(response.data.coord);
 }
 
@@ -147,14 +196,6 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeather);
-
-  celciusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.remove("inactive");
-  fahrenheitLink.classList.add("inactive");
-
-  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
-  unitFeelsLikeElement.innerHTML = "°C";
 }
 
 function handleSubmit(event) {
@@ -220,6 +261,8 @@ function displayFahrenheitTemperature(event) {
   if (celsiusActive) {
     let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
     let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
+    let hourlyTemperature = document.querySelectorAll(".hourly-temperature");
+
     for (let i = 0; i < temperatureMax.length; i++) {
       let temperatureFahrenheitMax =
         (parseInt(temperatureMax[i].innerText) * 9) / 5 + 32;
@@ -230,6 +273,14 @@ function displayFahrenheitTemperature(event) {
       let temperatureFahrenheitMin =
         (parseInt(temperatureMin[i].innerText) * 9) / 5 + 32;
       temperatureMin[i].innerHTML = `${Math.round(temperatureFahrenheitMin)}°`;
+    }
+
+    for (let i = 0; i < hourlyTemperature.length; i++) {
+      let temperatureHourlyFahrenheit =
+        (parseInt(hourlyTemperature[i].innerText) * 9) / 5 + 32;
+      hourlyTemperature[i].innerHTML = `${Math.round(
+        temperatureHourlyFahrenheit
+      )}°`;
     }
 
     celsiusActive = !celsiusActive;
@@ -254,6 +305,7 @@ function displayCelciusTemperature(event) {
   if (!celsiusActive) {
     let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
     let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
+    let hourlyTemperature = document.querySelectorAll(".hourly-temperature");
 
     for (let i = 0; i < temperatureMax.length; i++) {
       let temperatureCelsiusMax =
@@ -266,6 +318,15 @@ function displayCelciusTemperature(event) {
         ((parseInt(temperatureMin[i].innerText) - 32) * 5) / 9;
       temperatureMin[i].innerHTML = `${Math.round(temperatureCelsiusMin)}°`;
     }
+
+    for (let i = 0; i < hourlyTemperature.length; i++) {
+      let temperatureHourlyCelsius =
+        ((parseInt(hourlyTemperature[i].innerText) - 32) * 5) / 9;
+      hourlyTemperature[i].innerHTML = `${Math.round(
+        temperatureHourlyCelsius
+      )}°`;
+    }
+
     celsiusActive = !celsiusActive;
   }
 }

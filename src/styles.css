@@ -59,11 +59,12 @@ i {
 
 [alt] {
   text-transform: capitalize;
+  font-size: 13px;
 }
 
 .weather-app-wrapper {
   max-width: 700px;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .weather-app {
@@ -113,6 +114,7 @@ i {
   cursor: default;
   text-decoration: none;
 }
+
 .active:hover {
   color: #1a3c40;
   text-decoration: none;
@@ -122,6 +124,7 @@ i {
   text-decoration: none;
   color: #ede6db;
 }
+
 .inactive:hover {
   text-decoration: underline;
   color: #1a3c40;
@@ -155,6 +158,28 @@ i {
   font-size: 22px;
   color: #ede6db;
   margin: 0;
+}
+
+.hourly-weather {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 15px;
+  border-radius: 10px;
+}
+
+.weather-hour {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hourly-weather-icon {
+  width: 30px;
+}
+
+.hourly-temperature {
+  margin-top: 5px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .forecast {
