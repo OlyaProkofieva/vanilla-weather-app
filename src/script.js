@@ -194,6 +194,14 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeather);
+
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.remove("inactive");
+  fahrenheitLink.classList.add("inactive");
+
+  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
+  unitFeelsLikeElement.innerHTML = "°C";
 }
 
 function handleSubmit(event) {
