@@ -153,8 +153,7 @@ function displayWeather(response) {
   let windElement = document.querySelector("#wind");
   let pressureElement = document.querySelector("#pressure");
 
-  celsiusTemperature = response.data.main.temp;
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   iconElement.setAttribute(
     "src",
@@ -163,8 +162,7 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   cityElement.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  feelsLikeCelsiusTemperature = response.data.main.feels_like;
-  feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
   pressureElement.innerHTML = Math.round(response.data.main.pressure);
@@ -194,31 +192,11 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeather);
-
-  celciusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.remove("inactive");
-  fahrenheitLink.classList.add("inactive");
-
-  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
-  unitFeelsLikeElement.innerHTML = "°C";
 }
 
 function handleSubmit(event) {
   event.preventDefault();
-  let searchInput = document.querySelector(".search-input");
-  let currentCity = document.querySelector("#current-city");
-
-  let input = searchInput.value.trim();
-  if (input) {
-    currentCity.innerHTML = ` `;
-  } else {
-    currentCity.innerHTML = null;
-    alert("Enter a location, please");
-  }
-
-  let city = searchInput.value;
-
+  let city = document.querySelector(".search-input").value;
   searchCity(city);
 }
 
@@ -258,101 +236,6 @@ function displayTelAvivWeather(event) {
   searchCity(city);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#day-temperature");
-  let feelsLikeElement = document.querySelector("#feels-like");
-  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
-
-  celciusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  celciusLink.classList.add("inactive");
-  fahrenheitLink.classList.remove("inactive");
-
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let feelsLikeFahrenheitTemperature =
-    (feelsLikeCelsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  feelsLikeElement.innerHTML = Math.round(feelsLikeFahrenheitTemperature);
-  unitFeelsLikeElement.innerHTML = "°F";
-
-  if (celsiusActive) {
-    let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
-    let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
-    let hourlyTemperature = document.querySelectorAll(".hourly-temperature");
-
-    for (let i = 0; i < temperatureMax.length; i++) {
-      let temperatureFahrenheitMax =
-        (parseInt(temperatureMax[i].innerText) * 9) / 5 + 32;
-      temperatureMax[i].innerHTML = `${Math.round(temperatureFahrenheitMax)}°`;
-    }
-
-    for (let i = 0; i < temperatureMin.length; i++) {
-      let temperatureFahrenheitMin =
-        (parseInt(temperatureMin[i].innerText) * 9) / 5 + 32;
-      temperatureMin[i].innerHTML = `${Math.round(temperatureFahrenheitMin)}°`;
-    }
-
-    for (let i = 0; i < hourlyTemperature.length; i++) {
-      let temperatureHourlyFahrenheit =
-        (parseInt(hourlyTemperature[i].innerText) * 9) / 5 + 32;
-      hourlyTemperature[i].innerHTML = `${Math.round(
-        temperatureHourlyFahrenheit
-      )}°`;
-    }
-
-    celsiusActive = !celsiusActive;
-  }
-}
-
-function displayCelciusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#day-temperature");
-  let feelsLikeElement = document.querySelector("#feels-like");
-  let unitFeelsLikeElement = document.querySelector("#feels-like-unit");
-
-  celciusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.remove("inactive");
-  fahrenheitLink.classList.add("inactive");
-
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  feelsLikeElement.innerHTML = Math.round(feelsLikeCelsiusTemperature);
-  unitFeelsLikeElement.innerHTML = "°C";
-
-  if (!celsiusActive) {
-    let temperatureMax = document.querySelectorAll(".forecast-temperature-max");
-    let temperatureMin = document.querySelectorAll(".forecast-temperature-min");
-    let hourlyTemperature = document.querySelectorAll(".hourly-temperature");
-
-    for (let i = 0; i < temperatureMax.length; i++) {
-      let temperatureCelsiusMax =
-        ((parseInt(temperatureMax[i].innerText) - 32) * 5) / 9;
-      temperatureMax[i].innerHTML = `${Math.round(temperatureCelsiusMax)}°`;
-    }
-
-    for (let i = 0; i < temperatureMin.length; i++) {
-      let temperatureCelsiusMin =
-        ((parseInt(temperatureMin[i].innerText) - 32) * 5) / 9;
-      temperatureMin[i].innerHTML = `${Math.round(temperatureCelsiusMin)}°`;
-    }
-
-    for (let i = 0; i < hourlyTemperature.length; i++) {
-      let temperatureHourlyCelsius =
-        ((parseInt(hourlyTemperature[i].innerText) - 32) * 5) / 9;
-      hourlyTemperature[i].innerHTML = `${Math.round(
-        temperatureHourlyCelsius
-      )}°`;
-    }
-
-    celsiusActive = !celsiusActive;
-  }
-}
-
-let celsiusTemperature = null;
-let feelsLikeCelsiusTemperature = null;
-let celsiusActive = true;
-
 let locationButton = document.querySelector(".current-location-button");
 locationButton.addEventListener("click", getLocation);
 
@@ -376,11 +259,5 @@ searchTokyo.addEventListener("click", displayTokyoWeather);
 
 let searchTelAviv = document.querySelector("#tel-aviv-link");
 searchTelAviv.addEventListener("click", displayTelAvivWeather);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", displayCelciusTemperature);
 
 searchCity("Kyiv");

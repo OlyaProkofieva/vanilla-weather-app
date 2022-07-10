@@ -109,32 +109,11 @@ i {
   line-height: 0.7;
 }
 
-.active {
-  color: #1a3c40;
-  cursor: default;
-  text-decoration: none;
-}
-
-.active:hover {
-  color: #1a3c40;
-  text-decoration: none;
-}
-
-.inactive {
-  text-decoration: none;
-  color: #ede6db;
-}
-
-.inactive:hover {
-  text-decoration: underline;
-  color: #1a3c40;
-}
-
-.units {
-  font-size: 23px;
-  font-weight: 500;
+.unit {
+  font-size: 27px;
+  font-weight: 700;
   position: relative;
-  top: -57px;
+  top: -55px;
 }
 
 .current-weather-details {
