@@ -196,7 +196,20 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector(".search-input").value;
+
+  let searchInput = document.querySelector(".search-input");
+  let currentCity = document.querySelector("#current-city");
+
+  let input = searchInput.value.trim();
+  if (input) {
+    currentCity.innerHTML = ` `;
+  } else {
+    currentCity.innerHTML = null;
+    alert("Enter a location, please");
+  }
+
+  let city = searchInput.value;
+
   searchCity(city);
 }
 
