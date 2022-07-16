@@ -63,7 +63,7 @@ function displayForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="col-2">
+        `<div class="col-sm-2">
                 <div class="forecast-day">${formatDateForecast(
                   forecastDay.dt
                 )}</div>
@@ -108,7 +108,7 @@ function displayHourlyWeather(response) {
     if (index < 12) {
       hourlyWeatherHTML =
         hourlyWeatherHTML +
-        `<div class="col-1">
+        `<div class="col-sm-1">
               <div class="weather-hour">${formatDateHourlyWeather(
                 hour.dt
               )}</div>
