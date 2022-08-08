@@ -255,3 +255,62 @@ i {
   font-weight: 400;
   text-transform: capitalize;
 }
+
+@media (max-width: 900px) {
+  .cities-links {
+    font-size: 14px;
+  }
+
+  .current-weather-main {
+    width: 230px;
+    height: 230px;
+  }
+
+  #day-temperature {
+    font-size: 80px;
+  }
+
+  .unit {
+    font-size: 20px;
+    font-weight: 600;
+    top: -45px;
+  }
+
+  #weather-description {
+    font-size: 20px;
+  }
+
+  #current-weather-icon {
+    width: 60px;
+  }
+
+  .forecast-day {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .forecast-temperatures {
+    font-size: 12px;
+  }
+
+  .forecast-icon {
+    width: 30px;
+  }
+
+  .weather-hour {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .hourly-weather-icon {
+    width: 20px;
+  }
+
+  .hourly-temperature {
+    font-size: 12px;
+  }
+
+  .current-weather-details {
+    font-size: 17px;
+  }
+}
